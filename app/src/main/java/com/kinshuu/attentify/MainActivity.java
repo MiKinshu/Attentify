@@ -1,76 +1,63 @@
 package com.kinshuu.attentify;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-
-import java.util.ArrayList;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
+    //Firebase instance variables
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference msubjectsDatabaseReference;
+    private ChildEventListener mChildEventListener;
 
-    private RecyclerView recyclerView;
-    private ArrayList<Model> modelArrayList;
-    private CustomAdapter customAdapter;
-    private Button btnselect, btndeselect, btnnext;
-    private  String[] rolllist = new String[]{"IIT2018001", "IIT2018002", "IIT2018003", "IIT2018004", "IIT2018005", "IIT2018006", "IIT2018007", "IIT2018008"};
-    private  String[] namelist = new String[]{"q", "w", "e", "r", "t", "y", "u", "i"};
+    //managing user data
+    String Subject="null";
+    String LTP="null";
+    String Prof="null";
+    String Date="null";
+    String Rollno="null";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerView = findViewById(R.id.recycler);
-        btnselect = findViewById(R.id.select);
-        btndeselect = findViewById(R.id.deselect);
-        btnnext = findViewById(R.id.next);
-
-        modelArrayList = getModel(false);
-        customAdapter = new CustomAdapter(this,modelArrayList);
-        recyclerView.setAdapter(customAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), RecyclerView.VERTICAL, false));
-
-        btnselect.setOnClickListener(new View.OnClickListener() {
+        mFirebaseDatabase=FirebaseDatabase.getInstance();
+        msubjectsDatabaseReference=mFirebaseDatabase.getReference().child(Prof).child(Subject).child(LTP).child(Date);
+        mChildEventListener= new ChildEventListener() {
             @Override
-            public void onClick(View v) {
-                modelArrayList = getModel(true);
-                customAdapter = new CustomAdapter(MainActivity.this,modelArrayList);
-                recyclerView.setAdapter(customAdapter);
-            }
-        });
-        btndeselect.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                modelArrayList = getModel(false);
-                customAdapter = new CustomAdapter(MainActivity.this,modelArrayList);
-                recyclerView.setAdapter(customAdapter);
-            }
-        });
-        btnnext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,NextActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-    private ArrayList<Model> getModel(boolean isSelect){
-        ArrayList<Model> list = new ArrayList<>();
-        for(int i = 0; i < rolllist.length; i++){
+            }
 
-            Model model = new Model();
-            model.setSelected(isSelect);
-            model.setName(namelist[i]);
-            model.setRoll(rolllist[i]);
-            list.add(model);
-        }
-        return list;
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
     }
 }
