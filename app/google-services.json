@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1047354664527",
+    "firebase_url": "https://attentify-83bd9.firebaseio.com",
+    "project_id": "attentify-83bd9",
+    "storage_bucket": "attentify-83bd9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1047354664527:android:4ca79bd2f4290da0",
+        "android_client_info": {
+          "package_name": "com.kinshuu.attentify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1047354664527-5tqfcidk82dhbggeuhvvdvlo9ulmkt9m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kinshuu.attentify",
+            "certificate_hash": "269c3e14a31b90617d7ffc884537a6efeab08040"
+          }
+        },
+        {
+          "client_id": "1047354664527-84q6l4jhrpkkgu517tn99k16kl0j8aub.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBh2RTOGQ5GcY4P5zDIrPrvS0k8sAdOcg0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1047354664527-84q6l4jhrpkkgu517tn99k16kl0j8aub.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
