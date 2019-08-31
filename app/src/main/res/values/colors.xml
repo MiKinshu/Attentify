@@ -6,4 +6,5 @@
     <color name="colorPrimaryLight">#F2F8FC</color>
     <color name="colorButton">#F06449</color>
     <color name="colorText">#5C6D70</color>
+    <color name="colorWhite">#FFFFFF</color>
 </resources>

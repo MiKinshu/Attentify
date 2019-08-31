@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spinnerBatch"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="36dp"
@@ -21,69 +21,94 @@
 
     <Button
         android:id="@+id/BTNl"
-        android:layout_width="80dp"
+        android:elevation="10dp"
+        android:layout_width="100dp"
         android:layout_height="80dp"
         android:layout_marginStart="36dp"
         android:layout_marginTop="16dp"
         android:background="#FFFFFF"
-        android:fontFamily="@font/roboto_thin"
+        android:fontFamily="@font/roboto"
+        android:shadowColor="#57A7FF"
+        android:shadowDx="15"
+        android:shadowDy="15"
+        android:shadowRadius="15"
         android:text="L"
+        android:textColor="@color/colorText"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerBatch" />
 
     <Button
         android:id="@+id/BTNt"
-        android:layout_width="80dp"
+        android:layout_width="100dp"
         android:layout_height="80dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:background="#FFFFFF"
-        android:fontFamily="@font/roboto_thin"
+        android:fontFamily="@font/roboto"
+        android:shadowColor="#57A7FF"
+        android:shadowDx="15"
+        android:shadowDy="15"
+        android:shadowRadius="15"
         android:text="T"
+        android:textColor="@color/colorText"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/BTNp"
         app:layout_constraintStart_toEndOf="@+id/BTNl"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerBatch" />
 
     <Button
         android:id="@+id/BTNp"
-        android:layout_width="80dp"
+        android:layout_width="100dp"
         android:layout_height="80dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="36dp"
         android:background="#FFFFFF"
-        android:fontFamily="@font/roboto_thin"
+        android:fontFamily="@font/roboto"
+        android:shadowColor="#57A7FF"
+        android:shadowDx="15"
+        android:shadowDy="15"
+        android:shadowRadius="15"
         android:text="P"
+        android:textColor="@color/colorText"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerBatch" />
 
     <Button
         android:id="@+id/BTNmanageatt"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="36dp"
         android:layout_marginBottom="48dp"
         android:background="#FFFFFF"
+        android:fontFamily="@font/roboto"
+        android:shadowColor="#57A7FF"
         android:text="Manage Attendance"
+        android:textColor="@color/colorText"
         android:textSize="19sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/BTNupdate" />
 
     <Button
         android:id="@+id/BTNupdate"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="48dp"
         android:background="#FFFFFF"
+        android:fontFamily="@font/roboto"
+        android:shadowColor="#57A7FF"
         android:text="Update and Sync"
+        android:textColor="@color/colorText"
         android:textSize="19sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/BTNmanageatt"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
