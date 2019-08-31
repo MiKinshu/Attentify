@@ -24,16 +24,7 @@
             android:textColor="#fff"
             android:layout_weight="1"
             android:id="@+id/select"
-            android:text="Present All"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="5dp"
-            android:background="@drawable/cardview"
-            android:textColor="#fff"
-            android:layout_weight="1"
-            android:id="@+id/deselect"
-            android:text="Absent All"/>
+            android:text="Toggle All"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -43,7 +34,7 @@
             android:textColor="#fff"
             android:id="@+id/next"
             android:visibility="visible"
-            android:text="Upload Attendence"/>
+            android:text="Save"/>
     </LinearLayout>
 
 </LinearLayout>

@@ -13,17 +13,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class Atteneder extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ArrayList<Model> modelArrayList;
+    private ArrayList<Subjects> subjectsArrayList;
     private CustomAdapter customAdapter;
     private Button btnselect, btndeselect, btnnext;
     private  String[] rolllist = new String[]{"IIT2018001", "IIT2018002", "IIT2018003", "IIT2018004", "IIT2018005", "IIT2018006", "IIT2018007", "IIT2018008", "IIT2018009", "IIT2018010"};
     private  String[] namelist = new String[]{"q", "w", "e", "r", "t", "y", "u", "i", "o", "p"};
-
+    int t_switch=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,39 +33,44 @@ public class Atteneder extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recycler);
         btnselect = findViewById(R.id.select);
-        btndeselect = findViewById(R.id.deselect);
         btnnext = findViewById(R.id.next);
 
         modelArrayList = getModel(false);
         customAdapter = new CustomAdapter(this,modelArrayList);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), RecyclerView.VERTICAL, false));
-
         btnselect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                modelArrayList = getModel(true);
-                customAdapter = new CustomAdapter(Atteneder.this,modelArrayList);
-                recyclerView.setAdapter(customAdapter);
-            }
-        });
-        btndeselect.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                modelArrayList = getModel(false);
-                customAdapter = new CustomAdapter(Atteneder.this,modelArrayList);
-                recyclerView.setAdapter(customAdapter);
+                if(t_switch==0) {
+                    modelArrayList = getModel(true);
+                    customAdapter = new CustomAdapter(Atteneder.this, modelArrayList);
+                    recyclerView.setAdapter(customAdapter);
+                    t_switch=1;
+                }
+                else{
+                    modelArrayList = getModel(false);
+                    customAdapter = new CustomAdapter(Atteneder.this,modelArrayList);
+                    recyclerView.setAdapter(customAdapter);t_switch=0;
+                }
             }
         });
         btnnext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Atteneder.this,NextActivity.class);
-                startActivity(intent);
+                subjectsArrayList = getSubjects(modelArrayList);
+
+                /*
+                YAAAAAAAAAAAHAAAAAN!!!!!!!
+
+                PRATEEK MISHRA YAHA PE SE "subjectsArrayList" Adapter intent karwa lena
+                day and date daal dena aur main activity mein intent kar dena after successful dialog box.
+                */
+
+//              getTheToast(subjectsArrayList);//For testing (by toasting) value of array adapter to be returned
             }
         });
     }
-
     private ArrayList<Model> getModel(boolean isSelect){
         ArrayList<Model> list = new ArrayList<>();
         for(int i = 0; i < rolllist.length; i++){
@@ -75,5 +82,36 @@ public class Atteneder extends AppCompatActivity {
             list.add(model);
         }
         return list;
+    }
+    private ArrayList<Subjects> getSubjects(ArrayList<Model> lis){
+        ArrayList<Subjects> list = new ArrayList<>();
+        for(int i = 0; i < rolllist.length; i++){
+            Subjects sub = new Subjects(0);
+            sub.setName(namelist[i]);
+            sub.setRoll(rolllist[i]);
+            sub.setDate("date");
+            sub.setDay("day");
+            if(CustomAdapter.imageModelArrayList.get(i).getSelected()) {
+                sub.setPres(1);
+//                Toast.makeText(getApplicationContext(),lis.get(i).getName(),Toast.LENGTH_LONG).show();
+            }
+            else {
+                sub.setPres(0);
+            }
+            list.add(sub);
+        }
+        return list;
+    }
+    private void getTheToast(ArrayList<Subjects> sublist){
+        String str="";
+        for(int i = 0; i < rolllist.length; i++){
+           str+=sublist.get(i).getPres();str+= " ";
+           str+=sublist.get(i).getDate();str+= " ";
+           str+=sublist.get(i).getDay();str+= " ";
+           str+=sublist.get(i).getName();str+= " ";
+           str+=sublist.get(i).getRoll();str+= " ";
+           str+='\n';
+        }
+        Toast.makeText(getApplicationContext(),str,Toast.LENGTH_LONG).show();
     }
 }

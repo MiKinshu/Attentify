@@ -31,6 +31,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /*Testing Intent start*/
+//        Intent intent=new Intent(getApplicationContext(),Atteneder.class);
+//        startActivity(intent);
+        /*Testing Intent end*/
+
         mFirebaseDatabase=FirebaseDatabase.getInstance();
         msubjectsDatabaseReference=mFirebaseDatabase.getReference().child(Prof).child(Subject).child(LTP).child(Date);
         mChildEventListener= new ChildEventListener() {

@@ -20,6 +20,12 @@ public class Subjects implements Parcelable {
     public String getDate() {
         return date;
     }
+    public void setPres(int pres) {
+        this.pres = pres;
+    }
+    public int getPres() {
+        return pres;
+    }
     public void setDate(String date) {
         this.date = date;
     }
