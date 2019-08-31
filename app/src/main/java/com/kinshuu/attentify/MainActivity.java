@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -46,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         /*Testing Intent start*/
-//        Intent intent=new Intent(getApplicationContext(),Atteneder.class);
-//        startActivity(intent);
+        Intent intent=new Intent(getApplicationContext(),Atteneder.class);
+        startActivity(intent);
         /*Testing Intent end*/
 
         mFirebaseDatabase=FirebaseDatabase.getInstance();
