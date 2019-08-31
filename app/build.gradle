@@ -31,5 +31,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0-beta01'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.google.firebase:firebase-database:19.0.0'
+    implementation 'com.firebaseui:firebase-ui-auth:5.0.0'
+    implementation 'com.google.firebase:firebase-auth:18.0.0'
 }
 apply plugin: 'com.google.gms.google-services'

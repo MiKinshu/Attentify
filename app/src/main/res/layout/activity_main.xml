@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryLight"
+    android:background="@drawable/bhutcuteeee"
     tools:context=".MainActivity">
 
     <Spinner
@@ -12,12 +12,12 @@
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="36dp"
-        android:background="@android:drawable/btn_dropdown"
+        android:background="@drawable/spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/BTNl"
@@ -83,11 +83,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="36dp"
         android:layout_marginBottom="48dp"
-        android:background="#FFFFFF"
+        android:background="@color/colorAccent"
         android:fontFamily="@font/roboto"
         android:shadowColor="#57A7FF"
         android:text="Manage Attendance"
-        android:textColor="@color/colorText"
+        android:textColor="#FFFFFF"
         android:textSize="19sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -104,11 +104,23 @@
         android:background="#FFFFFF"
         android:fontFamily="@font/roboto"
         android:shadowColor="#57A7FF"
-        android:text="Update Attendance"
-        android:textColor="@color/colorText"
+        android:text="Upload Attendance"
+        android:textColor="@color/colorAccent"
         android:textSize="19sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/BTNmanageatt"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="Choose a class from the drop down."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

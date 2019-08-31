@@ -77,7 +77,7 @@ public class Atteneder extends AppCompatActivity {
                 day and date daal dena aur main activity mein intent kar dena after successful dialog box.
                 */
 
-              getTheToast(subjectsArrayList);//For testing (by toasting) value of array adapter to be returned
+//              getTheToast(subjectsArrayList);//For testing (by toasting) value of array adapter to be returned
             }
         });
     }
