@@ -62,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         /*Testing Intent start*/
-//        Intent intent=new Intent(getApplicationContext(),Atteneder.class);
-//        startActivity(intent);
+        Intent intent=new Intent(getApplicationContext(),Atteneder.class);
+        startActivity(intent);
         /*Testing Intent end*/
 
         mFirebaseDatabase=FirebaseDatabase.getInstance();

@@ -16,7 +16,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Atteneder extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -74,14 +77,13 @@ public class Atteneder extends AppCompatActivity {
                 day and date daal dena aur main activity mein intent kar dena after successful dialog box.
                 */
 
-//              getTheToast(subjectsArrayList);//For testing (by toasting) value of array adapter to be returned
+              getTheToast(subjectsArrayList);//For testing (by toasting) value of array adapter to be returned
             }
         });
     }
     private ArrayList<Model> getModel(boolean isSelect){
         ArrayList<Model> list = new ArrayList<>();
         for(int i = 0; i < rolllist.length; i++){
-
             Model model = new Model();
             model.setSelected(isSelect);
             model.setName(namelist[i]);
@@ -96,8 +98,13 @@ public class Atteneder extends AppCompatActivity {
             Subjects sub = new Subjects(0);
             sub.setName(namelist[i]);
             sub.setRoll(rolllist[i]);
-            sub.setDate("date");
-            sub.setDay("day");
+            String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
+            String t1=currentDateTimeString.substring(0,12);//,t2=currentDateTimeString.substring(13);
+            sub.setDate(t1);
+            SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
+            Date d = new Date();
+            String dayOfTheWeek = sdf.format(d);
+            sub.setDay(dayOfTheWeek);
             if(CustomAdapter.imageModelArrayList.get(i).getSelected()) {
                 sub.setPres(1);
 //                Toast.makeText(getApplicationContext(),lis.get(i).getName(),Toast.LENGTH_LONG).show();
@@ -112,11 +119,11 @@ public class Atteneder extends AppCompatActivity {
     private void getTheToast(ArrayList<Subjects> sublist){
         String str="";
         for(int i = 0; i < rolllist.length; i++){
-           str+=sublist.get(i).getPres();str+= " ";
-           str+=sublist.get(i).getDate();str+= " ";
-           str+=sublist.get(i).getDay();str+= " ";
-           str+=sublist.get(i).getName();str+= " ";
-           str+=sublist.get(i).getRoll();str+= " ";
+           str+="Present?  ";str+=sublist.get(i).getPres();str+= " ";
+           str+="Date: ";str+=sublist.get(i).getDate();str+= " ";
+           str+="Day: ";str+=sublist.get(i).getDay();str+= " ";
+           str+="Name: ";str+=sublist.get(i).getName();str+= " ";
+           str+="Roll: ";str+=sublist.get(i).getRoll();str+= " ";
            str+='\n';
         }
         Toast.makeText(getApplicationContext(),str,Toast.LENGTH_LONG).show();
