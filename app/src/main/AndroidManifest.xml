@@ -13,7 +13,6 @@
             android:name=".Atteneder"
             android:label="@string/title_activity_atteneder"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".NextActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
