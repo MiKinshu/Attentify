@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference msubjectsDatabaseReferenceWrite,msubjectsDatabaseReferenceRead;
     private ChildEventListener mChildEventListener;
     private FirebaseAuth mFirebaseAuth;
-    private FirebaseAuth.AuthStateListener mAuthStateListener.
+    private FirebaseAuth.AuthStateListener mAuthStateListener;
 
     //managing user data
     String Subject="";
@@ -67,11 +67,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        /*Testing Intent start*/
-        //Intent intent=new Intent(getApplicationContext(),Atteneder.class);
-        //startActivity(intent);
-        /*Testing Intent end*/
 
         mFirebaseDatabase=FirebaseDatabase.getInstance();
         mFirebaseAuth=FirebaseAuth.getInstance();
@@ -110,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
         final Button BTNp=findViewById(R.id.BTNp);
         final Button BTNupdate=findViewById(R.id.BTNupdate);
         final Button BTNmanageatt=findViewById(R.id.BTNmanageatt);
+        Button BTNprev= findViewById(R.id.BTNprev);
         Spinner spinnerBatch=findViewById(R.id.spinnerBatch);
 
         String[] spinnerBatchlist={"Select Subject","PAS2018","DST2019","POE2019"};
@@ -222,9 +218,9 @@ public class MainActivity extends AppCompatActivity {
                     for (int i = 0; i < subjectsArrayList.size(); i++) {
                         msubjectsDatabaseReferenceWrite.push().setValue(subjectsArrayList.get(i));
                     }
+                    subjectsArrayList= new ArrayList<>();
+                    Toast.makeText(MainActivity.this, "Attendance Uploaded.", Toast.LENGTH_SHORT).show();
                 }
-                Toast.makeText(MainActivity.this, "Attendance Uploaded.", Toast.LENGTH_SHORT).show();
-                subjectsArrayList= new ArrayList<>();
             }
         });
 
@@ -240,5 +236,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        BTNprev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(buttonenable==1) {
+                    Intent intent = new Intent(MainActivity.this, com.kinshuu.attentify.ViewAttend.class);
+                    startActivity(intent);
+                }
+                else
+                    Toast.makeText(MainActivity.this, "Choose a class from the dropdown first.", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
