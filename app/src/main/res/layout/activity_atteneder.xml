@@ -5,36 +5,51 @@
     android:orientation="vertical"
     tools:context=".Atteneder">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="205dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="Select to mark as present." />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:layout_marginTop="15dp"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginBottom="8dp"
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/select"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@drawable/cardview"
-            android:textColor="#fff"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="12dp"
             android:layout_weight="1"
-            android:id="@+id/select"
-            android:text="Toggle All"/>
+            android:background="@color/colorWhite"
+            android:text="Toggle All"
+            android:textColor="@color/colorAccent" />
+
         <Button
+            android:id="@+id/next"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_weight="1"
+            android:layout_marginStart="12dp"
             android:layout_marginLeft="5dp"
-            android:background="@drawable/cardview"
+            android:layout_marginEnd="24dp"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:text="Save"
             android:textColor="#fff"
-            android:id="@+id/next"
-            android:visibility="visible"
-            android:text="Save"/>
+            android:visibility="visible" />
     </LinearLayout>
 
 </LinearLayout>

@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -28,17 +29,32 @@ public class MainActivity extends AppCompatActivity {
     private ChildEventListener mChildEventListener;
 
     //managing user data
-    String Subject="null";
+    String Subject="";
     String LTP="null";
     String Prof="RK";
     String Student="PM";
-    String Date="null";
+    String Date="31Aug2019";
     String Rollno="null";
     int clicked=0,b1=0,b2=0,b3=0;
+    int RC_USER_PREF=88;
 
     //student arraylists
     ArrayList<Model> modelArrayList=new ArrayList<>();
     ArrayList<Subjects> subjectsArrayList=new ArrayList<>();
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode!=RESULT_CANCELED) {
+            if (requestCode == RC_USER_PREF) {
+                if (data != null) {
+                    subjectsArrayList = data.getParcelableArrayListExtra("subjects");
+                }
+                if (subjectsArrayList == null)
+                    subjectsArrayList = new ArrayList<>();
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
         /*Testing Intent end*/
 
         mFirebaseDatabase=FirebaseDatabase.getInstance();
-        msubjectsDatabaseReferenceWrite=mFirebaseDatabase.getReference().child(Prof).child(Subject).child(LTP).child(Date);
         msubjectsDatabaseReferenceRead=mFirebaseDatabase.getReference().child("Students").child(Subject);
         mChildEventListener= new ChildEventListener() {
             @Override
@@ -104,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
                     BTNupdate.setEnabled(true);
                     BTNmanageatt.setEnabled(true);
                     Subject=parent.getItemAtPosition(position).toString();
+                    Toast.makeText(MainActivity.this, Subject, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -191,11 +207,12 @@ public class MainActivity extends AppCompatActivity {
         BTNupdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(modelArrayList.size()==0)
+                msubjectsDatabaseReferenceWrite=mFirebaseDatabase.getReference().child(Prof).child(Subject).child(LTP).child(Date);
+                if(subjectsArrayList.size()==0)
                     Toast.makeText(MainActivity.this, "Take attendance first!", Toast.LENGTH_SHORT).show();
                 else {
-                    for (int i = 0; i < modelArrayList.size(); i++) {
-                        msubjectsDatabaseReferenceWrite.push().setValue(modelArrayList.get(i));
+                    for (int i = 0; i < subjectsArrayList.size(); i++) {
+                        msubjectsDatabaseReferenceWrite.push().setValue(subjectsArrayList.get(i));
                     }
                 }
             }
@@ -204,8 +221,10 @@ public class MainActivity extends AppCompatActivity {
         BTNmanageatt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(MainActivity.this, com.kinshuu.attentify.Atteneder.class);
+                startActivityForResult(intent, RC_USER_PREF);
             }
         });
+
     }
 }

@@ -54,9 +54,9 @@ public class Subjects implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(roll);
         dest.writeString(name);
+        dest.writeInt(pres);
         dest.writeString(day);
         dest.writeString(date);
-        dest.writeInt(pres);
     }
 
     public Subjects(Parcel source) {

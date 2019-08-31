@@ -11,6 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -24,7 +25,7 @@ public class Atteneder extends AppCompatActivity {
     private CustomAdapter customAdapter;
     private Button btnselect, btndeselect, btnnext;
     private  String[] rolllist = new String[]{"IIT2018001", "IIT2018002", "IIT2018003", "IIT2018004", "IIT2018005", "IIT2018006", "IIT2018007", "IIT2018008", "IIT2018009", "IIT2018010"};
-    private  String[] namelist = new String[]{"q", "w", "e", "r", "t", "y", "u", "i", "o", "p"};
+    private  String[] namelist = new String[]{"Prateek Mishra", "Roshni Prajapati", "Ayush Raj", "Raunak Rathour", "Astha Tiwari", "Sunidhi Kashyap", "Shivansh Tiwari", "Ajay Kudal", "o", "p"};
     int t_switch=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +61,12 @@ public class Atteneder extends AppCompatActivity {
             public void onClick(View v) {
                 subjectsArrayList = getSubjects(modelArrayList);
 
+                //getTheToast(subjectsArrayList);//For testing (by toasting) value of array adapter to be returned
+                Intent intent = new Intent();
+                intent.putParcelableArrayListExtra("subjects",subjectsArrayList);
+                setResult(RESULT_OK, intent);
+                //getTheToast(subjectsArrayList);//For testing (by toasting) value of array adapter to be returned
+                finish();
                 /*
                 YAAAAAAAAAAAHAAAAAN!!!!!!!
 
